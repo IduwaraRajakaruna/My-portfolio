@@ -57,19 +57,19 @@ const Contact = () => {
     {
       icon: '📧', // Contact type icon
       title: 'Email',
-      value: 'iduwararajakaruna@gmail.com', // 📝 Your email address
-      link: 'mailto:iduwararajakaruna@gmail.com' // 📝 Update with your email
+      value: 'iduwararajakaruna5555@gmail.com', // 📝 Your email address
+      link: 'mailto:iduwararajakaruna5555@gmail.com' // 📝 Update with your email
     },
     {
       icon: '📱',
       title: 'Phone',
-      value: '+94 77 123 4567', // 📝 Your phone number
-      link: 'tel:+94771234567' // 📝 Update with your phone number
+      value: '071 344 8918', // 📝 Your phone number
+      link: 'tel:0713448918' // 📝 Update with your phone number
     },
     {
       icon: '📍',
       title: 'Location',
-      value: 'Colombo, Sri Lanka', // 📝 Your location
+      value: 'Moratuwa, Sri Lanka', // 📝 Your location
       link: '#'
     }
   ]
@@ -78,12 +78,12 @@ const Contact = () => {
   const socialLinks = [
     {
       name: 'GitHub',
-      url: 'https://github.com/iduwararajakaruna', // 📝 Your GitHub profile
+      url: 'https://github.com/IduwaraRajakaruna', // 📝 Your GitHub profile
       icon: '🐙'
     },
     {
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/iduwararajakaruna',
+      url: 'https://www.linkedin.com/in/iduwara-rajakaruna-0a0a98279',
       icon: '💼'
     }
   ]

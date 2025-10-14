@@ -36,38 +36,38 @@ const Skills = () => {
     {
       title: "Frontend", // Category name
       icon: "🎨", // Category icon
-      skills: ["React", "JavaScript", "HTML5", "CSS3"], // Add your frontend skills
-      count: 4 // Update count to match your skills array length
+      skills: ["React", "Vite", "Tailwind CSS", "HTML5", "CSS3"], // Add your frontend skills
+      count: 5 // Update count to match your skills array length
     },
     {
       title: "Backend", 
       icon: "⚙️",
-      skills: ["Node.js", "Express.js", "REST APIs",".Net"], // Add your backend skills
+      skills: ["ASP.NET Core", "Node.js", "Express", "REST APIs"], // Add your backend skills
       count: 4 // Updated count
     },
     {
       title: "Languages",
       icon: "💻", 
-      skills: ["JavaScript", "Python", "Java", "C++"], // Programming languages you know
+      skills: ["JavaScript", "C#", "PHP", "C/C++"], // Programming languages you know
       count: 4
     },
     {
-      title: "Tools",
+      title: "Cloud & Tools",
       icon: "🛠️",
-      skills: ["Git", "VS Code", "Figma"], // Development tools you use
-      count: 3
+      skills: ["Azure", "GitHub", "Postman", "VS Code"], // Development tools you use
+      count: 4
     },
     {
       title: "Databases",
       icon: "🗄️",
-      skills: ["MySQL", "MongoDB"], // Database technologies
-      count: 2
+      skills: ["SQL Server", "Cosmos DB", "MongoDB", "MySQL"], // Database technologies
+      count: 4
     },
     {
-      title: "Cloud",
-      icon: "☁️",
-      skills: ["Firebase", "Vercel"], // Cloud platforms you use
-      count: 2
+      title: "Others",
+      icon: "⚡",
+      skills: ["Agile", "Git", "Figma", "Bootstrap"], // Cloud platforms you use
+      count: 4
     }
   ]
 
@@ -139,17 +139,17 @@ const Skills = () => {
               >
                 <div className="flex items-center mb-6">
                   <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl flex items-center justify-center text-white font-bold text-xl mr-4">
-                    UOT
+                    UOM
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold text-white">B.Sc. (Hons) in Information Technology</h4>
-                    <p className="text-purple-400 font-medium">University of Technology</p>
+                    <h4 className="text-xl font-bold text-white">BSc (Hons) IT & Management</h4>
+                    <p className="text-purple-400 font-medium">University of Moratuwa</p>
                   </div>
                 </div>
-                <p className="text-gray-300 mb-4">2023–2027  (Expected)</p>
+                <p className="text-gray-300 mb-4">2023–2027 (Expected) | CGPA: 3.1</p>
                 <div className="flex items-center">
                   <span className="inline-block px-3 py-1 bg-purple-600/20 text-purple-400 rounded-full text-sm font-medium border border-purple-500/30">
-                    Final Year
+                    Current Student
                   </span>
                 </div>
               </motion.div>
@@ -164,14 +164,14 @@ const Skills = () => {
                     A/L
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold text-white">Advanced Level</h4>
-                    <p className="text-emerald-400 font-medium">National High School</p>
+                    <h4 className="text-xl font-bold text-white">G.C.E. Advanced Level</h4>
+                    <p className="text-emerald-400 font-medium">Kekirawa Central College</p>
                   </div>
                 </div>
-                <p className="text-gray-300 mb-4">2016-2018</p>
+                <p className="text-gray-300 mb-4">2018–2021 | Z-Score: 1.7026</p>
                 <div className="flex items-center">
                   <span className="inline-block px-3 py-1 bg-emerald-600/20 text-emerald-400 rounded-full text-sm font-medium border border-emerald-500/30">
-                    Physical Science
+                    2A 1B | Physical Science
                   </span>
                 </div>
               </motion.div>
