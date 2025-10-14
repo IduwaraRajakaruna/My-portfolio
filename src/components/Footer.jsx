@@ -229,15 +229,30 @@ const Footer = () => {
                 © 2025 Iduwara Rajakaruna. All Rights Reserved.
               </motion.p>
               <motion.div 
-                className="flex space-x-6"
+                className="flex items-center space-x-6"
                 whileHover={{ scale: 1.05 }}
               >
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  Privacy
+                <a href="#about" className="text-gray-400 hover:text-purple-400 transition-colors duration-200">
+                  About
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  Terms
+                <a href="#projects" className="text-gray-400 hover:text-purple-400 transition-colors duration-200">
+                  Projects
                 </a>
+                <a href="#contact" className="text-gray-400 hover:text-purple-400 transition-colors duration-200">
+                  Contact
+                </a>
+                {/* Back to Top Button */}
+                <motion.button
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className="p-2 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full hover:from-purple-700 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.9 }}
+                  title="Back to top"
+                >
+                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                  </svg>
+                </motion.button>
               </motion.div>
             </div>
           </motion.div>
