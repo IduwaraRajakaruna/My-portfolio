@@ -34,87 +34,83 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "E-Commerce Platform", // 📝 Your project name
-      description: "A full-stack e-commerce solution with modern UI/UX, secure payment processing, and real-time inventory management.", // 📝 Project description
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop&crop=center", // 📝 Replace with your project screenshot
-      technologies: ["React", "Node.js", "MongoDB", "Stripe API", "Tailwind CSS"], // 📝 Technologies used
+      title: "LegalFlow - Centralized Legal Management System", // 📝 Your project name
+      description: "A smart legal workflow management system that helps legal professionals manage meetings, deadlines, and documentation. Features real-time notifications and scheduling.", // 📝 Project description
+      image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&h=400&fit=crop&crop=center", // 📝 Replace with your project screenshot
+      technologies: ["ASP.NET Core", "React", "Vite", "Tailwind CSS", "Azure Cosmos DB", "Azure Blob Storage"], // 📝 Technologies used
       category: "Full Stack", // 📝 Project category
-      challenge: "Building a scalable platform that handles high traffic and secure transactions", // 📝 Main challenge faced
-      solution: "Implemented microservices architecture with Redis caching and JWT authentication", // 📝 How you solved it
-      features: ["Real-time inventory", "Secure payments", "Admin dashboard", "Mobile responsive"], // 📝 Key features
+      challenge: "Building a comprehensive system for legal professionals with complex workflow requirements", // 📝 Main challenge faced
+      solution: "Implemented modular architecture with Calendar & Scheduling + Notifications modules, real-time API integration", // 📝 How you solved it
+      features: ["Calendar & Scheduling", "Real-time notifications", "Document management", "Meeting coordination"], // 📝 Key features
       liveUrl: "#", // 📝 Replace with live demo URL
-      githubUrl: "#", // 📝 Replace with GitHub repository URL
-      featured: true // 📝 Set to true for featured projects
+      githubUrl: "https://github.com/IduwaraRajakaruna", // 📝 Replace with GitHub repository URL
+      featured: true, // 📝 Set to true for featured projects
+      timeline: "2nd Year Software Project | 2023–2024",
+      role: "Frontend Developer - Calendar & Scheduling + Notifications modules"
     },
     {
       id: 2,
-      title: "Task Management Dashboard",
-      description: "A collaborative project management tool with real-time updates, team communication, and advanced analytics.",
-      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop&crop=center",
-      technologies: ["Vue.js", "Firebase", "Chart.js", "Socket.io", "SCSS"],
-      category: "Web App",
-      challenge: "Creating real-time collaboration features with offline capability",
-      solution: "Used Firebase Firestore for real-time sync and service workers for offline functionality",
-      features: ["Real-time collaboration", "Offline mode", "Analytics", "Team chat"],
+      title: "BizRates Mobile App",
+      description: "A mobile app designed with Figma to help users find and review top-rated businesses. Includes leaderboards, smart recommendations, messaging, and community features.",
+      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop&crop=center",
+      technologies: ["Figma", "Mobile Design", "UX/UI", "Prototyping"],
+      category: "Mobile Design",
+      challenge: "Creating an intuitive user experience for business discovery and community interaction",
+      solution: "Designed comprehensive UX flows with user-centered design principles and interactive prototypes",
+      features: ["Business discovery", "Review system", "Leaderboards", "Smart recommendations", "Community messaging"],
       liveUrl: "#",
       githubUrl: "#",
-      featured: true
+      featured: true,
+      timeline: "Sysco LABS Project – 2024",
+      role: "UX/UI Designer - App design and UX flow development"
     },
     {
       id: 3,
-      title: "AI-Powered Chat Bot",
-      description: "An intelligent chatbot with natural language processing capabilities and machine learning integration.",
-      image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=600&h=400&fit=crop&crop=center",
-      technologies: ["Python", "TensorFlow", "Flask", "OpenAI API", "React"],
-      category: "AI/ML",
-      challenge: "Training a model to understand context and provide meaningful responses",
-      solution: "Fine-tuned GPT model with custom training data and implemented context memory",
-      features: ["Natural language understanding", "Context awareness", "Multi-language support", "Analytics"],
+      title: "Laravel E-commerce Gift Shop",
+      description: "A responsive e-commerce web application with comprehensive admin dashboard, product/category management, and role-based authentication system.",
+      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop&crop=center",
+      technologies: ["Laravel", "MySQL", "Bootstrap", "PHP", "Blade Templates"],
+      category: "Web Application",
+      challenge: "Building a complete e-commerce solution with secure authentication and admin functionality",
+      solution: "Implemented Laravel's built-in authentication with role-based access control and comprehensive CRUD operations",
+      features: ["Product management", "Category management", "Admin dashboard", "Role-based authentication", "Responsive design"],
       liveUrl: "#",
-      githubUrl: "#",
-      featured: true
+      githubUrl: "https://github.com/IduwaraRajakaruna",
+      featured: true,
+      timeline: "Individual Project | 2024",
+      role: "Full-Stack Developer"
     },
     {
       id: 4,
-      title: "Mobile Banking App",
-      description: "A secure mobile banking application with biometric authentication and real-time transaction monitoring.",
-      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop&crop=center",
-      technologies: ["React Native", "Node.js", "PostgreSQL", "AWS", "Jest"],
-      category: "Mobile",
-      challenge: "Ensuring bank-level security while maintaining excellent user experience",
-      solution: "Implemented multi-layer security with biometric auth, encryption, and fraud detection",
-      features: ["Biometric login", "Real-time alerts", "Transaction history", "Budget tracking"],
+      title: "Smart Home Receptionist (IoT)",
+      description: "An automated visitor access system with smart gate control, motion detection, and Telegram bot notifications for seamless home automation.",
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop&crop=center",
+      technologies: ["ESP32-S3", "PIR & IR Sensors", "C/C++", "Telegram Bot API", "IoT"],
+      category: "IoT Project",
+      challenge: "Coordinating multiple sensors with reliable communication and automated gate control",
+      solution: "Developed motion detection system with DC motor control and integrated Telegram notifications",
+      features: ["Motion detection", "Automated gate control", "Telegram notifications", "Visitor management", "Real-time monitoring"],
       liveUrl: "#",
-      githubUrl: "#",
-      featured: false
+      githubUrl: "https://github.com/IduwaraRajakaruna",
+      featured: false,
+      timeline: "1st Year Project | 2023–2024",
+      role: "IoT Developer - Motion detection and DC motor control system"
     },
     {
       id: 5,
-      title: "Data Visualization Platform",
-      description: "An interactive data visualization tool for business intelligence with custom chart builders and real-time data streaming.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&crop=center",
-      technologies: ["D3.js", "React", "Python", "FastAPI", "WebSockets"],
-      category: "Data Science",
-      challenge: "Rendering complex visualizations with large datasets without performance issues",
-      solution: "Implemented data streaming, virtual scrolling, and WebGL acceleration",
-      features: ["Interactive charts", "Real-time data", "Custom dashboards", "Export options"],
+      title: "E-Commerce Website (Ongoing)",
+      description: "A modern full-stack e-commerce platform built with React, Node.js, and MongoDB. Features product management, shopping cart, and secure payment processing.",
+      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop&crop=center",
+      technologies: ["React", "Node.js", "Express", "MongoDB", "REST APIs"],
+      category: "Full Stack",
+      challenge: "Building a scalable e-commerce platform with modern web technologies",
+      solution: "Implementing MERN stack architecture with RESTful APIs and responsive design",
+      features: ["Product catalog", "Shopping cart", "User authentication", "Order management", "Responsive design"],
       liveUrl: "#",
-      githubUrl: "#",
-      featured: false
-    },
-    {
-      id: 6,
-      title: "IoT Home Automation",
-      description: "A comprehensive home automation system with IoT device integration and voice control capabilities.",
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop&crop=center",
-      technologies: ["Arduino", "Raspberry Pi", "React", "MQTT", "Alexa Skills"],
-      category: "IoT",
-      challenge: "Coordinating multiple IoT devices with reliable communication and low latency",
-      solution: "Used MQTT protocol with edge computing for local processing and cloud backup",
-      features: ["Voice control", "Mobile app", "Automated schedules", "Energy monitoring"],
-      liveUrl: "#",
-      githubUrl: "#",
-      featured: false
+      githubUrl: "https://github.com/IduwaraRajakaruna",
+      featured: false,
+      timeline: "Ongoing Project | 2024",
+      role: "Full-Stack Developer"
     }
   ]
 
@@ -227,9 +223,19 @@ const Projects = () => {
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
                   <div>
-                    <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 group-hover:text-purple-400 transition-colors duration-200">
+                    <h3 className="text-3xl md:text-4xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-200">
                       {project.title}
                     </h3>
+                    {project.timeline && (
+                      <p className="text-sm text-purple-400 font-medium mb-2">
+                        {project.timeline}
+                      </p>
+                    )}
+                    {project.role && (
+                      <p className="text-sm text-gray-400 mb-4">
+                        {project.role}
+                      </p>
+                    )}
                     <p className="text-lg text-gray-300 leading-relaxed mb-6">
                       {project.description}
                     </p>

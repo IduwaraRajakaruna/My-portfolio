@@ -43,35 +43,35 @@ const About = () => {
     }
   }
 
-  // 📚 CUSTOMIZE: Update your personal information cards
+    // 📚 CUSTOMIZE: Update your personal information cards
   const aboutCards = [
     {
       icon: "🎓", // Change emoji icon
       title: "Education", // Update title
-      description: "BSc (Hons) IT & Management at University of Technology", // Your actual education
-      highlight: "Currently pursuing" // Current status
+      description: "BSc (Hons) IT & Management at University of Moratuwa", // Your actual education
+      highlight: "CGPA: 3.1" // Current status
     },
     {
       icon: "💻", // Change to represent your specialty
       title: "Specialization", // Your main field
-      description: "Full-stack web development with modern technologies", // Your expertise
-      highlight: "React & Node.js" // Your tech stack
+      description: "Full-stack development with React, .NET, and Azure cloud", // Your expertise
+      highlight: "React & .NET" // Your tech stack
     },
     {
       icon: "🚀", // Change to represent your goals
       title: "Mission", // Your career mission
-      description: "Building innovative solutions that solve real-world problems", // Your mission statement
-      highlight: "User-centered design" // Your approach
+      description: "Building modern, scalable, and elegant digital solutions", // Your mission statement
+      highlight: "Cloud Integration" // Your approach
     }
   ]
 
   // 🎯 CUSTOMIZE: Update your current focus areas / skills you're learning
   const currentFocus = [
-    "React Development", // Replace with your skills
-    "Full Stack Web Apps", 
-    "UI/UX Design",
-    "Modern JavaScript",
-    "Problem Solving"
+    "React & Vite", // Replace with your skills
+    "ASP.NET Core", 
+    "Azure Cloud",
+    "Full Stack Development",
+    "Mobile App Design"
   ]
 
   return (
@@ -119,26 +119,26 @@ const About = () => {
                 className="space-y-6 text-gray-300 leading-relaxed"
               >
                 <p>
-                  I am a dedicated software development enthusiast with a strong foundation in modern 
-                  web technologies and programming principles. Currently pursuing my studies in 
-                  Information Technology, I specialize in creating responsive and user-friendly 
-                  web applications using React.js, JavaScript, and full-stack technologies.
+                  I'm an undergraduate software engineer passionate about full-stack development, 
+                  cloud integration, and building efficient, user-friendly web applications. 
+                  Currently pursuing my BSc (Hons) in Information Technology and Management at 
+                  the University of Moratuwa.
                 </p>
                 
                 <p>
-                  My goal is to build innovative solutions that solve real-world problems while 
-                  delivering exceptional user experiences. I am constantly learning and expanding 
-                  my skill set to stay current with the latest industry trends and best practices 
-                  in software development.
+                  I enjoy working with modern technologies like React, .NET, and Azure to craft 
+                  scalable solutions that solve real-world problems. My experience spans from 
+                  legal workflow management systems to IoT projects and e-commerce platforms.
                 </p>
                 
                 <p>
-                  Currently seeking internship opportunities and open to collaborative projects in 
-                  web development, full-stack development, and innovative tech solutions.
+                  With hands-on experience in project development and a strong foundation in 
+                  software engineering principles, I'm always eager to take on new challenges 
+                  and contribute to innovative digital solutions.
                 </p>
               </motion.div>
 
-              <motion.div 
+                            <motion.div 
                 variants={itemVariants}
                 className="mt-8 flex flex-wrap gap-4"
               >
@@ -151,12 +151,12 @@ const About = () => {
                   Let's Connect
                 </motion.a>
                 <motion.a
-                  href="/cv.pdf"
-                  className="border-2 border-gray-600 text-gray-300 px-6 py-3 rounded-lg font-medium hover:border-purple-400 hover:text-purple-400 transition-all duration-200"
+                  href="/resume.pdf"
+                  className="border-2 border-gray-600 text-gray-300 px-6 py-3 rounded-lg font-medium hover:border-purple-400 hover:text-purple-400 transition-all duration-200 backdrop-blur-sm"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Download CV
+                  Download Resume
                 </motion.a>
               </motion.div>
             </motion.div>
@@ -185,7 +185,7 @@ const About = () => {
                 <div className="absolute inset-4 bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl overflow-hidden border border-gray-700">
                   <img 
                     src="/images/profile.jpg" 
-                    alt="Iduwara Rajakaruna - Professional Photo" 
+                    alt="Iduwara Rajakaruna - Software Engineer" 
                     className="w-full h-full object-cover"
                   />
                 </div>

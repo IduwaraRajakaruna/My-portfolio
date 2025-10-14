@@ -50,17 +50,17 @@ const Footer = () => {
   const socialLinks = [
     {
       name: 'GitHub',
-      url: 'https://github.com/iduwararajakaruna',
+      url: 'https://github.com/IduwaraRajakaruna',
       icon: '🐙'
     },
     {
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/iduwararajakaruna',
+      url: 'https://www.linkedin.com/in/iduwara-rajakaruna-0a0a98279',
       icon: '💼'
     },
     {
       name: 'Email',
-      url: 'mailto:iduwararajakaruna@gmail.com',
+      url: 'mailto:iduwararajakaruna5555@gmail.com',
       icon: '📧'
     }
   ]
@@ -226,7 +226,7 @@ const Footer = () => {
                 className="text-gray-400 mb-4 md:mb-0"
                 whileHover={{ scale: 1.05 }}
               >
-                © {currentYear} Iduwara Rajakaruna. Built with ❤️ using React & Tailwind CSS.
+                © 2025 Iduwara Rajakaruna. All Rights Reserved.
               </motion.p>
               <motion.div 
                 className="flex space-x-6"

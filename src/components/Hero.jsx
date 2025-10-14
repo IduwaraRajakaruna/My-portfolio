@@ -129,16 +129,16 @@ const Hero = () => {
               variants={itemVariants}
               className="text-xl md:text-2xl text-white/90 mb-4 font-medium"
             >
-              Software Engineer {/* Your job title/role */}
+              Software Engineer | React & .NET Developer {/* Your job title/role */}
             </motion.p>
             
             <motion.p 
               variants={itemVariants}
               className="text-lg text-white/80 mb-8 max-w-2xl leading-relaxed"
             >
-              I build modern web applications and software solutions using React, JavaScript, 
-              and full-stack technologies. I enjoy solving real-world problems by combining 
-              clean code, innovative design, and user-centered development.
+              Building modern, scalable, and elegant digital solutions. Passionate about 
+              full-stack development, cloud integration, and creating efficient, user-friendly 
+              web applications with React, .NET, and Azure.
             </motion.p>
 
             {/* Stats */}
@@ -167,11 +167,11 @@ const Hero = () => {
             >
               <motion.a 
                 href="#projects" 
-                className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-lg font-medium hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 text-center shadow-lg backdrop-blur-sm"
+                className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-lg font-medium hover:from-purple-700 hover:to-blue-700 transition-all duration-200 text-center shadow-lg shadow-purple-500/25 backdrop-blur-sm"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                View Projects
+                View My Work
               </motion.a>
               <motion.a 
                 href="#contact" 
@@ -179,7 +179,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Get In Touch
+                Contact Me
               </motion.a>
             </motion.div>
           </div>

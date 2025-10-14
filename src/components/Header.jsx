@@ -34,10 +34,11 @@ const Header = () => {
 
   // 🧭 CUSTOMIZE: Update navigation menu items
   const navItems = [
-    { name: 'Home', href: '#hero' }, // 📝 Add/remove navigation items as needed
+    { name: 'Home', href: '#home' }, // 📝 Add/remove navigation items as needed
     { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Education', href: '#skills' },
     { name: 'Contact', href: '#contact' }
     // 📝 Add more sections: { name: 'Blog', href: '#blog' }
   ]
