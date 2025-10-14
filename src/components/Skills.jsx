@@ -1,101 +1,290 @@
 import React from 'react'
+import { motion } from 'framer-motion'
+import { useInView } from 'framer-motion'
+import { useRef } from 'react'
 
+// 🛠️ SKILLS SECTION - Technical skills and education
+// 📝 Customize: Add your skills, education background, and achievements
 const Skills = () => {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, threshold: 0.2 })
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  }
+
+  // 🛠️ CUSTOMIZE: Update your technical skills by category
   const skillCategories = [
     {
-      title: "Frontend Development",
-      skills: [
-        { name: "React", level: 90 },
-        { name: "JavaScript", level: 85 },
-        { name: "TypeScript", level: 80 },
-        { name: "HTML/CSS", level: 90 },
-        { name: "Tailwind CSS", level: 85 },
-        { name: "Next.js", level: 75 },
-      ]
+      title: "Frontend", // Category name
+      icon: "🎨", // Category icon
+      skills: ["React", "JavaScript", "HTML5", "CSS3"], // Add your frontend skills
+      count: 4 // Update count to match your skills array length
     },
     {
-      title: "Backend Development",
-      skills: [
-        { name: "Node.js", level: 80 },
-        { name: "Express.js", level: 80 },
-        { name: "Python", level: 75 },
-        { name: "Java", level: 70 },
-        { name: "REST APIs", level: 85 },
-        { name: "GraphQL", level: 65 },
-      ]
+      title: "Backend", 
+      icon: "⚙️",
+      skills: ["Node.js", "Express.js", "REST APIs",".Net"], // Add your backend skills
+      count: 4 // Updated count
     },
     {
-      title: "Database & Tools",
-      skills: [
-        { name: "MongoDB", level: 80 },
-        { name: "MySQL", level: 75 },
-        { name: "Git", level: 85 },
-        { name: "Docker", level: 70 },
-        { name: "AWS", level: 65 },
-        { name: "Firebase", level: 75 },
-      ]
+      title: "Languages",
+      icon: "💻", 
+      skills: ["JavaScript", "Python", "Java", "C++"], // Programming languages you know
+      count: 4
+    },
+    {
+      title: "Tools",
+      icon: "🛠️",
+      skills: ["Git", "VS Code", "Figma"], // Development tools you use
+      count: 3
+    },
+    {
+      title: "Databases",
+      icon: "🗄️",
+      skills: ["MySQL", "MongoDB"], // Database technologies
+      count: 2
+    },
+    {
+      title: "Cloud",
+      icon: "☁️",
+      skills: ["Firebase", "Vercel"], // Cloud platforms you use
+      count: 2
+    }
+  ]
+
+  const achievements = [
+    {
+      icon: "🏆",
+      title: "Certifications",
+      subtitle: "Full Stack Web Development",
+      description: "Completed comprehensive web development course"
+    },
+    {
+      icon: "🏆", 
+      title: "Activities",
+      subtitle: "Tech Club Member",
+      description: "Active participant in university tech society"
+    },
+    {
+      icon: "🏆",
+      title: "Current Focus", 
+      subtitle: "React Development",
+      description: "Building modern web applications"
     }
   ]
 
   return (
-    <section id="skills" className="section-padding">
+    <section id="skills" className="section-padding bg-gradient-to-br from-gray-900 via-black to-gray-800" ref={ref}>
       <div className="container-custom">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              My <span className="text-gradient">Skills</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Technologies and tools I work with to bring ideas to life
-            </p>
-          </div>
+          <motion.div 
+            className="text-center mb-20"
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+          >
+            <motion.h2 
+              variants={itemVariants}
+              className="text-4xl md:text-6xl font-bold text-white mb-6"
+            >
+              Skills & <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Education</span>
+            </motion.h2>
+            <motion.p 
+              variants={itemVariants}
+              className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+            >
+              My academic background and professional certifications
+            </motion.p>
+          </motion.div>
 
-          {/* Skills Grid */}
-          <div className="grid md:grid-cols-3 gap-8">
-            {skillCategories.map((category, categoryIndex) => (
-              <div key={category.title} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
-                <h3 className="text-xl font-bold text-gray-900 mb-6 text-center">
-                  {category.title}
-                </h3>
-                
-                <div className="space-y-4">
-                  {category.skills.map((skill, skillIndex) => (
-                    <div key={skill.name}>
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="font-medium text-gray-700">{skill.name}</span>
-                        <span className="text-sm text-gray-500">{skill.level}%</span>
-                      </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div 
-                          className="bg-gradient-to-r from-primary-500 to-blue-500 h-2 rounded-full transition-all duration-1000 ease-out"
-                          style={{ width: `${skill.level}%` }}
-                        ></div>
-                      </div>
-                    </div>
-                  ))}
+          {/* Education Section */}
+          <motion.div 
+            className="mb-20"
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+          >
+            <motion.h3 
+              variants={itemVariants}
+              className="text-3xl font-bold text-white mb-12 text-center"
+            >
+              Education
+            </motion.h3>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <motion.div
+                variants={itemVariants}
+                className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 backdrop-blur-md p-8 rounded-2xl border border-purple-500/30 hover:border-purple-400/50 transition-colors duration-300"
+                whileHover={{ y: -5, scale: 1.02 }}
+              >
+                <div className="flex items-center mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl flex items-center justify-center text-white font-bold text-xl mr-4">
+                    UOT
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-white">B.Sc. (Hons) in Information Technology</h4>
+                    <p className="text-purple-400 font-medium">University of Technology</p>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+                <p className="text-gray-300 mb-4">2023–2027  (Expected)</p>
+                <div className="flex items-center">
+                  <span className="inline-block px-3 py-1 bg-purple-600/20 text-purple-400 rounded-full text-sm font-medium border border-purple-500/30">
+                    Final Year
+                  </span>
+                </div>
+              </motion.div>
 
-          {/* Additional Skills */}
-          <div className="mt-16 text-center">
-            <h3 className="text-2xl font-bold text-gray-900 mb-8">Other Technologies</h3>
-            <div className="flex flex-wrap justify-center gap-3">
-              {[
-                "React Native", "Flutter", "PostgreSQL", "Redis", "Kubernetes", 
-                "Jenkins", "Figma", "Adobe XD", "Linux", "Nginx"
-              ].map((tech) => (
-                <span 
-                  key={tech}
-                  className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full font-medium hover:bg-primary-50 hover:text-primary-600 transition-colors duration-200"
+              <motion.div
+                variants={itemVariants}
+                className="bg-gradient-to-br from-emerald-600/20 to-green-600/20 backdrop-blur-md p-8 rounded-2xl border border-emerald-500/30 hover:border-emerald-400/50 transition-colors duration-300"
+                whileHover={{ y: -5, scale: 1.02 }}
+              >
+                <div className="flex items-center mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-r from-emerald-600 to-green-600 rounded-xl flex items-center justify-center text-white font-bold text-xl mr-4">
+                    A/L
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-white">Advanced Level</h4>
+                    <p className="text-emerald-400 font-medium">National High School</p>
+                  </div>
+                </div>
+                <p className="text-gray-300 mb-4">2016-2018</p>
+                <div className="flex items-center">
+                  <span className="inline-block px-3 py-1 bg-emerald-600/20 text-emerald-400 rounded-full text-sm font-medium border border-emerald-500/30">
+                    Physical Science
+                  </span>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Technical Skills Grid */}
+          <motion.div 
+            className="mb-20"
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+          >
+            <motion.h3 
+              variants={itemVariants}
+              className="text-3xl font-bold text-white mb-12 text-center"
+            >
+              Technical Skills
+            </motion.h3>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {skillCategories.map((category, index) => (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  className="bg-gray-800/50 backdrop-blur-md p-8 rounded-2xl shadow-lg shadow-purple-500/10 hover:shadow-xl hover:shadow-purple-500/20 transition-shadow duration-300 border border-gray-700"
+                  whileHover={{ y: -5 }}
                 >
-                  {tech}
-                </span>
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center">
+                      <span className="text-3xl mr-3">{category.icon}</span>
+                      <h4 className="text-xl font-bold text-white">{category.title}</h4>
+                    </div>
+                    <span className="w-8 h-8 bg-purple-600/20 text-purple-400 rounded-full flex items-center justify-center font-bold text-sm border border-purple-500/30">
+                      {category.count}
+                    </span>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill, skillIndex) => (
+                      <motion.span
+                        key={skillIndex}
+                        className="px-3 py-2 bg-gray-700/50 text-gray-300 rounded-lg text-sm font-medium hover:bg-purple-600/20 hover:text-purple-400 transition-colors duration-200 border border-gray-600/50"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        {skill}
+                      </motion.span>
+                    ))}
+                  </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
+
+          {/* Achievements & Activities */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+          >
+            <motion.h3 
+              variants={itemVariants}
+              className="text-3xl font-bold text-white mb-12 text-center"
+            >
+              Achievements & Activities
+            </motion.h3>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {achievements.map((achievement, index) => (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  className="text-center p-8 bg-gradient-to-br from-gray-800/50 to-purple-600/20 backdrop-blur-md rounded-2xl hover:from-purple-600/20 hover:to-blue-600/20 transition-all duration-300 border border-gray-700"
+                  whileHover={{ y: -5, scale: 1.02 }}
+                >
+                  <div className="text-5xl mb-4">{achievement.icon}</div>
+                  <h4 className="text-lg font-bold text-white mb-2">{achievement.title}</h4>
+                  <h5 className="text-purple-400 font-semibold mb-3">{achievement.subtitle}</h5>
+                  <p className="text-gray-300 text-sm">{achievement.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Call to Action */}
+          <motion.div 
+            className="mt-20 text-center bg-gradient-to-r from-purple-600/20 to-blue-600/20 backdrop-blur-md rounded-3xl p-12 text-white border border-gray-700"
+            variants={itemVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+          >
+            <motion.h4 
+              className="text-2xl font-bold mb-4"
+              whileHover={{ scale: 1.05 }}
+            >
+              Ready to Collaborate?
+            </motion.h4>
+            <motion.p 
+              className="text-purple-200 mb-8 text-lg"
+              whileHover={{ scale: 1.02 }}
+            >
+              Let's build something amazing together with these technologies!
+            </motion.p>
+            <motion.a
+              href="#contact"
+              className="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-colors duration-200 shadow-lg shadow-purple-500/25"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Get In Touch
+            </motion.a>
+          </motion.div>
         </div>
       </div>
     </section>

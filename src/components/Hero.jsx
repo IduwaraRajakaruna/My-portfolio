@@ -1,61 +1,242 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 
+// 🏠 HERO SECTION - Main landing page with introduction
+// 📝 Customize: Update name, title, description, and call-to-action
 const Hero = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+        duration: 0.6
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  }
+
+  const floatingVariants = {
+    animate: {
+      y: [-10, 10, -10],
+      transition: {
+        duration: 3,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }
+    }
+  }
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-50 to-blue-50">
-        <div className="absolute inset-0 bg-white/50"></div>
-        <div className="absolute top-0 left-0 w-full h-full">
-          <div className="absolute top-10 left-10 w-20 h-20 bg-primary-200 rounded-full opacity-20 animate-pulse-slow"></div>
-          <div className="absolute top-32 right-20 w-16 h-16 bg-blue-200 rounded-full opacity-20 animate-pulse-slow delay-75"></div>
-          <div className="absolute bottom-20 left-20 w-24 h-24 bg-primary-100 rounded-full opacity-20 animate-pulse-slow delay-150"></div>
-          <div className="absolute bottom-32 right-10 w-12 h-12 bg-blue-100 rounded-full opacity-20 animate-pulse-slow delay-300"></div>
-        </div>
+      {/* 🎬 CUSTOMIZE: Background Video - Replace galaxy.mp4 with your video */}
+      <div className="absolute inset-0">
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src="/images/galaxy.mp4" type="video/mp4" />
+        </video>
+        {/* Video Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/40"></div>
+      </div>
+
+      {/* Animated Background Elements (Optional - can be removed if video is enough) */}
+      <div className="absolute inset-0">
+        <motion.div
+          className="absolute top-20 left-20 w-72 h-72 bg-blue-200/20 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.1, 0.3, 0.1]
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-20 right-20 w-96 h-96 bg-indigo-200/20 rounded-full blur-3xl"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.5, 0.3, 0.5]
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-200/20 rounded-full blur-3xl"
+          animate={{
+            rotate: [0, 360]
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
       </div>
 
       <div className="container-custom relative z-10">
-        <div className="text-center animate-fade-in">
-          {/* Profile Image */}
-          <div className="mb-8">
-            <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-r from-primary-500 to-blue-500 p-1">
-              <div className="w-full h-full bg-gray-200 rounded-full flex items-center justify-center">
-                <span className="text-4xl font-bold text-gray-600">IR</span>
+        <motion.div 
+          className="grid lg:grid-cols-2 gap-12 items-center"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {/* Left Content */}
+          <div className="text-left">
+            <motion.div variants={itemVariants} className="mb-6">
+              <motion.span 
+                className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm font-medium mb-6 border border-white/30"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                👋 Hello, I'm
+              </motion.span>
+            </motion.div>
+
+            {/* 📝 CUSTOMIZE: Update your name */}
+            <motion.h1 
+              variants={itemVariants}
+              className="text-5xl md:text-7xl font-bold text-white mb-6"
+            >
+              <span className="block">Iduwara</span> {/* Your first name */}
+              <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
+                Rajakaruna {/* Your last name */}
+              </span>
+            </motion.h1>
+            
+            {/* 📝 CUSTOMIZE: Update your professional title */}
+            <motion.p 
+              variants={itemVariants}
+              className="text-xl md:text-2xl text-white/90 mb-4 font-medium"
+            >
+              Software Engineer {/* Your job title/role */}
+            </motion.p>
+            
+            <motion.p 
+              variants={itemVariants}
+              className="text-lg text-white/80 mb-8 max-w-2xl leading-relaxed"
+            >
+              I build modern web applications and software solutions using React, JavaScript, 
+              and full-stack technologies. I enjoy solving real-world problems by combining 
+              clean code, innovative design, and user-centered development.
+            </motion.p>
+
+            {/* Stats */}
+            <motion.div 
+              variants={itemVariants}
+              className="flex flex-wrap gap-8 mb-8"
+            >
+              <div className="text-center p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
+                <div className="text-2xl font-bold text-white">3+</div>
+                <div className="text-sm text-white/80">Years Learning</div>
               </div>
-            </div>
+              <div className="text-center p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
+                <div className="text-2xl font-bold text-white">5+</div>
+                <div className="text-sm text-white/80">Projects Built</div>
+              </div>
+              <div className="text-center p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
+                <div className="text-2xl font-bold text-white">10+</div>
+                <div className="text-sm text-white/80">Technologies</div>
+              </div>
+            </motion.div>
+
+            {/* CTA Buttons */}
+            <motion.div 
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <motion.a 
+                href="#projects" 
+                className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-lg font-medium hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 text-center shadow-lg backdrop-blur-sm"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                View Projects
+              </motion.a>
+              <motion.a 
+                href="#contact" 
+                className="border-2 border-white/30 text-white px-8 py-4 rounded-lg font-medium hover:border-white hover:bg-white/10 transition-all duration-200 text-center backdrop-blur-sm"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Get In Touch
+              </motion.a>
+            </motion.div>
           </div>
 
-          {/* Main Content */}
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 animate-slide-up">
-            Hi, I'm <span className="text-gradient">Iduwara</span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-gray-600 mb-4 animate-slide-up delay-100">
-            Software Engineer
-          </p>
-          
-          <p className="text-lg text-gray-500 mb-8 max-w-2xl mx-auto animate-slide-up delay-200">
-            Passionate about building innovative solutions and creating exceptional user experiences 
-            with modern technologies and best practices.
-          </p>
+          {/* Right Content - Profile Image */}
+          <motion.div 
+            variants={itemVariants}
+            className="flex justify-center lg:justify-end"
+          >
+            <motion.div 
+              className="relative"
+              variants={floatingVariants}
+              animate="animate"
+            >
+              <div className="w-80 h-80 md:w-96 md:h-96 relative">
+                {/* Gradient Background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-400 via-purple-500 to-indigo-600 rounded-full"></div>
+                
+                {/* Profile Image Container */}
+                <div className="absolute inset-4 bg-white rounded-full flex items-center justify-center shadow-2xl overflow-hidden">
+                  <img 
+                    src="/images/profile.jpg" 
+                    alt="Iduwara Rajakaruna" 
+                    className="w-full h-full object-cover rounded-full"
+                  />
+                </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up delay-300">
-            <a href="#projects" className="btn-primary">
-              View My Work
-            </a>
-            <a href="#contact" className="btn-secondary">
-              Get In Touch
-            </a>
-          </div>
+                {/* Floating Elements */}
+                
+                
+                
 
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
-              <div className="w-1 h-3 bg-gray-400 rounded-full mt-2"></div>
-            </div>
-          </div>
-        </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+
+        {/* Scroll Indicator */}
+        <motion.div 
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.5, duration: 0.6 }}
+        >
+          <motion.div 
+            className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center cursor-pointer"
+            whileHover={{ scale: 1.1 }}
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          >
+            <motion.div 
+              className="w-1 h-3 bg-gray-400 rounded-full mt-2"
+              animate={{ height: [12, 6, 12] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            />
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )
