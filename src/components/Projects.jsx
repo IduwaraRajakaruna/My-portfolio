@@ -289,7 +289,7 @@ const Projects = () => {
                       {project.technologies.map((tech, idx) => (
                         <motion.span
                           key={idx}
-                          className="px-4 py-2 bg-gradient-to-r from-purple-600/20 to-blue-600/20 text-purple-300 rounded-full text-sm font-medium border border-purple-500/30 hover:from-purple-600/30 hover:to-blue-600/30 transition-all duration-200 backdrop-blur-sm"
+                          className="px-4 py-2 bg-gradient-to-r from-purple-600/20 to-blue-600/20 dark:text-purple-300 text-purple-700 rounded-full text-sm font-medium border border-purple-500/30 hover:from-purple-600/30 hover:to-blue-600/30 hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-200 backdrop-blur-sm"
                           whileHover={{ scale: 1.05, y: -2 }}
                           initial={{ opacity: 0, scale: 0.8 }}
                           whileInView={{ opacity: 1, scale: 1 }}
