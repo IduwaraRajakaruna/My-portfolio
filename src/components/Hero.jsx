@@ -195,22 +195,6 @@ const Hero = () => {
               animate="animate"
             >
               <div className="w-80 h-80 md:w-96 md:h-96 relative">
-                {/* Gradient Background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-400 via-purple-500 to-indigo-600 rounded-full"></div>
-                
-                {/* Profile Image Container */}
-                <div className="absolute inset-4 bg-white rounded-full flex items-center justify-center shadow-2xl overflow-hidden">
-                  <img 
-                    src="/images/profile.jpg" 
-                    alt="Iduwara Rajakaruna" 
-                    className="w-full h-full object-cover rounded-full"
-                  />
-                </div>
-
-                {/* Floating Elements */}
-                
-                
-                
 
               </div>
             </motion.div>
