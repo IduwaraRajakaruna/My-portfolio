@@ -55,14 +55,10 @@ const About = () => {
       icon: "💻", // Change to represent your specialty
       title: "Specialization", // Your main field
       description: "Full-stack development with React, .NET, and Azure cloud", // Your expertise
-      highlight: "React & .NET" // Your tech stack
+      highlight: "React & .NET / React & Node " // Your tech stack
+      
     },
-    {
-      icon: "🚀", // Change to represent your goals
-      title: "Mission", // Your career mission
-      description: "Building modern, scalable, and elegant digital solutions", // Your mission statement
-      highlight: "Cloud Integration" // Your approach
-    }
+
   ]
 
   // 🎯 CUSTOMIZE: Update your current focus areas / skills you're learning
@@ -71,7 +67,7 @@ const About = () => {
     "ASP.NET Core", 
     "Azure Cloud",
     "Full Stack Development",
-    "Mobile App Design"
+    "Mern Stack"
   ]
 
   return (
@@ -189,37 +185,7 @@ const About = () => {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                
-                {/* Floating tech icons */}
-                <motion.div
-                  className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center text-white text-xl shadow-lg shadow-purple-500/25"
-                  animate={{
-                    y: [0, -10, 0],
-                    rotate: [0, 10, 0]
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                >
-                  ⚛️
-                </motion.div>
-                
-                <motion.div
-                  className="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center text-white text-xl shadow-lg shadow-orange-500/25"
-                  animate={{
-                    scale: [1, 1.1, 1],
-                    rotate: [0, -10, 0]
-                  }}
-                  transition={{
-                    duration: 2.5,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                >
-                  🔥
-                </motion.div>
+             
               </div>
             </motion.div>
           </div>

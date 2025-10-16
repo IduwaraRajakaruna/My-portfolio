@@ -85,44 +85,7 @@ const Footer = () => {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
-            {/* Brand Section */}
-            <motion.div variants={itemVariants} className="lg:col-span-2">
-              <motion.h3 
-                className="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent"
-                whileHover={{ scale: 1.05 }}
-              >
-                Iduwara Rajakaruna
-              </motion.h3>
-              <p className="text-gray-300 text-lg mb-8 leading-relaxed">
-                Full-stack developer passionate about creating innovative digital solutions 
-                and meaningful user experiences. Always learning, always building.
-              </p>
-              
-              {/* Newsletter Signup */}
-              <div className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-2xl border border-gray-700/50">
-                <h4 className="text-xl font-semibold mb-4 text-white">Stay Updated</h4>
-                <p className="text-gray-300 mb-4">Get notified about my latest projects and articles.</p>
-                <form onSubmit={handleNewsletterSubmit} className="flex gap-3">
-                  <motion.input
-                    type="email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    className="flex-1 px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                    whileFocus={{ scale: 1.02 }}
-                  />
-                  <motion.button
-                    type="submit"
-                    className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-medium hover:from-blue-700 hover:to-indigo-700 transition-all duration-200"
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    Subscribe
-                  </motion.button>
-                </form>
-              </div>
-            </motion.div>
+           
 
             {/* Quick Links */}
             <motion.div variants={itemVariants}>
@@ -146,13 +109,7 @@ const Footer = () => {
               </ul>
 
               {/* Skills Badge */}
-              <motion.div 
-                className="mt-8 p-4 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 rounded-xl border border-blue-500/20"
-                whileHover={{ scale: 1.05 }}
-              >
-                <p className="text-blue-300 font-medium">💡 Always Learning</p>
-                <p className="text-gray-300 text-sm mt-1">Currently exploring AI/ML technologies</p>
-              </motion.div>
+              
             </motion.div>
 
             {/* Connect */}

@@ -39,11 +39,10 @@ const Education = () => {
       institution: "University of Moratuwa",
       degree: "BSc (Hons) in Information Technology and Management",
       details: "CGPA: 3.1",
-      description: "Specializing in software engineering, web development, and cloud technologies. Active in tech societies and project development.",
+      description: "",
       achievements: [
-        "Developed LegalFlow system as 2nd year project",
-        "Participated in Sysco LABS collaboration",
-        "Strong foundation in React, .NET, and Azure"
+        "Software Engineering",
+        "Qulity Assurance Engineering",
       ],
       icon: "🎓",
       color: "from-blue-500 to-purple-500"
@@ -55,11 +54,8 @@ const Education = () => {
       institution: "Kekirawa Central College",
       degree: "G.C.E. Advanced Level Examination",
       details: "2A 1B | Z-Score: 1.7026",
-      description: "Physical Science stream with strong performance in mathematics and science subjects.",
-      achievements: [
-        "Excellent performance in Physical Science",
-        "Strong foundation in Mathematics",
-        "Leadership roles in school activities"
+      description: "Commerce Stream",
+      achievements: ["With ICT"
       ],
       icon: "📚",
       color: "from-green-500 to-emerald-500"
