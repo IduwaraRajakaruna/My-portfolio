@@ -6,14 +6,12 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Projects from './components/Projects'
 import Skills from './components/Skills'
-import Education from './components/Education'
-import Contact from './components/Contact'
 import Footer from './components/Footer'
 
 function App() {
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-black dark:to-gray-800 transition-all duration-500">
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
         <StarCursorEffect />
         <Header />
         <main>
@@ -21,8 +19,6 @@ function App() {
           <About />
           <Projects />
           <Skills />
-          
-          
         </main>
         <Footer />
       </div>

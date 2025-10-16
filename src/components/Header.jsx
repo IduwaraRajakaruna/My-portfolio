@@ -1,81 +1,60 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { useTheme } from '../context/ThemeContext'
 
-// 🧭 HEADER/NAVIGATION - Top navigation bar
-// 📝 Customize: Update logo, navigation items, and styling
 const Header = () => {
-  const { isDarkMode, toggleTheme } = useTheme()
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [activeSection, setActiveSection] = useState('hero')
+  const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY
-      setScrolled(scrollPosition > 50)
+      setScrolled(window.scrollY > 50)
 
-      // Update active section based on scroll position
-      const sections = ['hero', 'about', 'skills', 'projects', 'contact']
-      const current = sections.find(section => {
-        const element = document.getElementById(section)
-        if (element) {
-          const rect = element.getBoundingClientRect()
-          return rect.top <= 100 && rect.bottom >= 100
+      const sections = ['home', 'about', 'projects', 'skills']
+      let currentSection = 'home'
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const element = document.getElementById(sections[i])
+        if (element?.getBoundingClientRect().top <= window.innerHeight / 2) {
+          currentSection = sections[i]
+          break
         }
-        return false
-      })
-      if (current) {
-        setActiveSection(current)
       }
+      
+      const footer = document.querySelector('footer')
+      if (footer?.getBoundingClientRect().top <= window.innerHeight / 2) {
+        currentSection = 'footer'
+      }
+
+      setActiveSection(currentSection)
     }
 
     window.addEventListener('scroll', handleScroll)
+    handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // 🧭 CUSTOMIZE: Update navigation menu items
   const navItems = [
-    { name: 'Home', href: '#home' }, // 📝 Add/remove navigation items as needed
+    { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
     { name: 'Projects', href: '#projects' },
     { name: 'Skills', href: '#skills' },
-    { name: 'Education', href: '#education' },
-    { name: 'Contact', href: '#contact' }
-    // 📝 Add more sections: { name: 'Blog', href: '#blog' }
+    { name: 'Contact', href: 'footer' }
   ]
 
   const handleNavClick = (e, href) => {
     e.preventDefault()
-    const target = document.querySelector(href)
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      })
-    }
+    const target = href === 'footer' 
+      ? document.querySelector('footer')
+      : document.querySelector(href)
+    
+    target?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     setIsOpen(false)
   }
 
   const menuVariants = {
-    closed: {
-      opacity: 0,
-      scale: 0.8,
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut"
-      }
-    },
-    open: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut",
-        staggerChildren: 0.1,
-        delayChildren: 0.1
-      }
-    }
+    closed: { opacity: 0, scale: 0.8 },
+    open: { opacity: 1, scale: 1 }
   }
 
   const itemVariants = {
@@ -98,18 +77,14 @@ const Header = () => {
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <motion.div
-              className="flex-shrink-0"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <a href="#hero" onClick={(e) => handleNavClick(e, '#hero')}>
+            <motion.div className="flex-shrink-0" whileHover={{ scale: 1.05 }}>
+              <a href="#home" onClick={(e) => handleNavClick(e, '#home')}>
                 <h1 className={`text-2xl font-bold transition-colors duration-300 ${
                   scrolled 
                     ? 'bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent' 
                     : 'text-white'
                 }`}>
-                  Iduwara<span className="text-purple-400">.</span>
+                  Iduwara
                 </h1>
               </a>
             </motion.div>
@@ -118,7 +93,9 @@ const Header = () => {
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-1">
                 {navItems.map((item) => {
-                  const isActive = activeSection === item.href.substring(1)
+                  const isActive = item.href === 'footer' 
+                    ? activeSection === 'footer' 
+                    : activeSection === item.href.substring(1)
                   return (
                     <motion.a
                       key={item.name}
@@ -136,7 +113,6 @@ const Header = () => {
                       whileHover={{ scale: 1.05, y: -2 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      {item.name}
                       {isActive && (
                         <motion.div
                           className={`absolute inset-0 rounded-full ${
@@ -153,41 +129,12 @@ const Header = () => {
               </div>
             </div>
 
-            {/* Theme Toggle & CTA Button */}
-            <div className="hidden md:flex items-center space-x-4">
-              {/* Theme Toggle Button */}
-              <motion.button
-                onClick={toggleTheme}
-                className={`p-3 rounded-full transition-all duration-300 ${
-                  scrolled
-                    ? 'bg-gray-700/50 hover:bg-gray-600/50 text-gray-300'
-                    : 'bg-white/20 hover:bg-white/30 text-white backdrop-blur-md'
-                }`}
-                whileHover={{ scale: 1.1, rotate: 15 }}
-                whileTap={{ scale: 0.9 }}
-                aria-label="Toggle theme"
-              >
-                <motion.div
-                  animate={{ rotate: isDarkMode ? 0 : 180 }}
-                  transition={{ duration: 0.3 }}
-                  className="w-5 h-5"
-                >
-                  {isDarkMode ? (
-                    <svg fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
-                    </svg>
-                  ) : (
-                    <svg fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                    </svg>
-                  )}
-                </motion.div>
-              </motion.button>
-
+            {/* CTA Button */}
+            <div className="hidden md:flex items-center">
               {/* CTA Button */}
               <motion.a
-                href="#contact"
-                onClick={(e) => handleNavClick(e, '#contact')}
+                href="footer"
+                onClick={(e) => handleNavClick(e, 'footer')}
                 className={`inline-flex items-center px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 ${
                   scrolled
                     ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 shadow-lg shadow-purple-500/25 hover:shadow-xl hover:shadow-purple-500/30'
@@ -271,7 +218,9 @@ const Header = () => {
       >
         <div className="px-6 py-8 space-y-2">
           {navItems.map((item, index) => {
-            const isActive = activeSection === item.href.substring(1)
+            const isActive = item.href === 'footer' 
+              ? activeSection === 'footer' 
+              : activeSection === item.href.substring(1)
             return (
               <motion.a
                 key={item.name}
@@ -296,8 +245,8 @@ const Header = () => {
             variants={itemVariants}
           >
             <a
-              href="#contact"
-              onClick={(e) => handleNavClick(e, '#contact')}
+              href="footer"
+              onClick={(e) => handleNavClick(e, 'footer')}
               className="block w-full text-center px-6 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-200 shadow-lg shadow-purple-500/25"
             >
               Let's Talk
@@ -305,18 +254,6 @@ const Header = () => {
           </motion.div>
         </div>
       </motion.div>
-
-      {/* Scroll Progress Indicator */}
-      <motion.div
-        className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-purple-600 to-blue-600"
-        style={{
-          width: `${Math.min((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100, 100)}%`
-        }}
-        initial={{ width: 0 }}
-        animate={{
-          width: `${Math.min((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100, 100)}%`
-        }}
-      />
     </motion.header>
   )
 }
