@@ -8,7 +8,7 @@ const Header = () => {
   const { isDarkMode, toggleTheme } = useTheme()
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [activeSection, setActiveSection] = useState('hero')
+  const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,21 +16,36 @@ const Header = () => {
       setScrolled(scrollPosition > 50)
 
       // Update active section based on scroll position
-      const sections = ['hero', 'about', 'skills', 'projects', 'contact']
-      const current = sections.find(section => {
-        const element = document.getElementById(section)
+      const sections = ['home', 'about', 'projects', 'skills']
+      let currentSection = 'home'
+
+      // Check each section from bottom to top to find the current one
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const element = document.getElementById(sections[i])
         if (element) {
           const rect = element.getBoundingClientRect()
-          return rect.top <= 100 && rect.bottom >= 100
+          // If section is visible in viewport (top is above middle of screen)
+          if (rect.top <= window.innerHeight / 2) {
+            currentSection = sections[i]
+            break
+          }
         }
-        return false
-      })
-      if (current) {
-        setActiveSection(current)
       }
+      
+      // Check if we're at the footer
+      const footer = document.querySelector('footer')
+      if (footer) {
+        const footerRect = footer.getBoundingClientRect()
+        if (footerRect.top <= window.innerHeight / 2) {
+          currentSection = 'footer'
+        }
+      }
+
+      setActiveSection(currentSection)
     }
 
     window.addEventListener('scroll', handleScroll)
+    handleScroll() // Set initial state
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -40,19 +55,31 @@ const Header = () => {
     { name: 'About', href: '#about' },
     { name: 'Projects', href: '#projects' },
     { name: 'Skills', href: '#skills' },
-    { name: 'Education', href: '#education' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Contact', href: 'footer' } // Points to footer section
     // 📝 Add more sections: { name: 'Blog', href: '#blog' }
   ]
 
   const handleNavClick = (e, href) => {
     e.preventDefault()
-    const target = document.querySelector(href)
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      })
+    
+    // Special handling for Contact link to scroll to footer
+    if (href === 'footer') {
+      const footer = document.querySelector('footer')
+      if (footer) {
+        footer.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        })
+      }
+    } else {
+      // Normal section navigation
+      const target = document.querySelector(href)
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        })
+      }
     }
     setIsOpen(false)
   }
@@ -109,7 +136,7 @@ const Header = () => {
                     ? 'bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent' 
                     : 'text-white'
                 }`}>
-                  Iduwara<span className="text-purple-400">.</span>
+                  Iduwara<span className="text-purple-400"></span>
                 </h1>
               </a>
             </motion.div>
@@ -118,7 +145,9 @@ const Header = () => {
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-1">
                 {navItems.map((item) => {
-                  const isActive = activeSection === item.href.substring(1)
+                  const isActive = item.href === 'footer' 
+                    ? activeSection === 'footer' 
+                    : activeSection === item.href.substring(1)
                   return (
                     <motion.a
                       key={item.name}
@@ -136,7 +165,6 @@ const Header = () => {
                       whileHover={{ scale: 1.05, y: -2 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      {item.name}
                       {isActive && (
                         <motion.div
                           className={`absolute inset-0 rounded-full ${
@@ -186,8 +214,8 @@ const Header = () => {
 
               {/* CTA Button */}
               <motion.a
-                href="#contact"
-                onClick={(e) => handleNavClick(e, '#contact')}
+                href="footer"
+                onClick={(e) => handleNavClick(e, 'footer')}
                 className={`inline-flex items-center px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 ${
                   scrolled
                     ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white hover:from-purple-700 hover:to-blue-700 shadow-lg shadow-purple-500/25 hover:shadow-xl hover:shadow-purple-500/30'
@@ -271,7 +299,9 @@ const Header = () => {
       >
         <div className="px-6 py-8 space-y-2">
           {navItems.map((item, index) => {
-            const isActive = activeSection === item.href.substring(1)
+            const isActive = item.href === 'footer' 
+              ? activeSection === 'footer' 
+              : activeSection === item.href.substring(1)
             return (
               <motion.a
                 key={item.name}
@@ -296,8 +326,8 @@ const Header = () => {
             variants={itemVariants}
           >
             <a
-              href="#contact"
-              onClick={(e) => handleNavClick(e, '#contact')}
+              href="footer"
+              onClick={(e) => handleNavClick(e, 'footer')}
               className="block w-full text-center px-6 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-200 shadow-lg shadow-purple-500/25"
             >
               Let's Talk
@@ -305,18 +335,6 @@ const Header = () => {
           </motion.div>
         </div>
       </motion.div>
-
-      {/* Scroll Progress Indicator */}
-      <motion.div
-        className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-purple-600 to-blue-600"
-        style={{
-          width: `${Math.min((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100, 100)}%`
-        }}
-        initial={{ width: 0 }}
-        animate={{
-          width: `${Math.min((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100, 100)}%`
-        }}
-      />
     </motion.header>
   )
 }
