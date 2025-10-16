@@ -171,7 +171,7 @@ const Skills = () => {
                 <p className="text-gray-300 mb-4">2018–2021 | Z-Score: 1.7026</p>
                 <div className="flex items-center">
                   <span className="inline-block px-3 py-1 bg-emerald-600/20 text-emerald-400 rounded-full text-sm font-medium border border-emerald-500/30">
-                    2A 1B | Physical Science
+                    2A 1B 
                   </span>
                 </div>
               </motion.div>
