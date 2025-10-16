@@ -4,32 +4,33 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Prevent white background on overscroll */
 html {
   scroll-behavior: smooth;
+  background: #000000; /* Dark background for overscroll */
+  overscroll-behavior: none; /* Prevent overscroll bounce on supported browsers */
 }
 
 body {
   font-family: 'Inter', sans-serif;
+  background: linear-gradient(to bottom right, #111827, #000000, #1f2937); /* Dark gradient background */
+  min-height: 100vh;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overscroll-behavior-y: none; /* Prevent vertical overscroll */
+}
+
+/* Additional fix for iOS Safari overscroll */
+#root {
+  background: linear-gradient(to bottom right, #111827, #000000, #1f2937);
+  min-height: 100vh;
 }
 
 @layer components {
-  .btn-primary {
-    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200;
-  }
-  
-  .btn-secondary {
-    @apply border border-primary-600 text-primary-600 hover:bg-primary-50 font-medium py-3 px-6 rounded-lg transition-colors duration-200;
-  }
-  
   .section-padding {
     @apply py-20 px-4 sm:px-6 lg:px-8;
   }
   
   .container-custom {
     @apply max-w-7xl mx-auto;
-  }
-  
-  .text-gradient {
-    @apply bg-gradient-to-r from-primary-600 to-blue-600 bg-clip-text text-transparent;
   }
 }
