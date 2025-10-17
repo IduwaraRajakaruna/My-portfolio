@@ -174,7 +174,7 @@ const Hero = () => {
                 View My Work
               </motion.a>
               <motion.a 
-                href="#contact" 
+                href="mailto:iduwararajakaruna5555@gmail.com?subject=Hi Iduwara! Let's connect&body=Hello Iduwara,%0D%0A%0D%0AI visited your portfolio and would like to connect with you.%0D%0A%0D%0ABest regards"
                 className="border-2 border-white/30 text-white px-8 py-4 rounded-lg font-medium hover:border-white hover:bg-white/10 transition-all duration-200 text-center backdrop-blur-sm"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}

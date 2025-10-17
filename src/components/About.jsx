@@ -54,7 +54,7 @@ const About = () => {
     {
       icon: "💻", // Change to represent your specialty
       title: "Specialization", // Your main field
-      description: "Full-stack development with React, .NET, and Azure cloud", // Your expertise
+      description: "Full-stack development with React + Node and .NET", // Your expertise
       highlight: "React & .NET / React & Node " // Your tech stack
       
     },
