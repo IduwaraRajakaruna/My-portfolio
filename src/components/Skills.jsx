@@ -257,34 +257,7 @@ const Skills = () => {
             </div>
           </motion.div>
 
-          {/* Call to Action */}
-          <motion.div 
-            className="mt-20 text-center bg-gradient-to-r from-purple-600/20 to-blue-600/20 backdrop-blur-md rounded-3xl p-12 text-white border border-gray-700"
-            variants={itemVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-          >
-            <motion.h4 
-              className="text-2xl font-bold mb-4"
-              whileHover={{ scale: 1.05 }}
-            >
-              Ready to Collaborate?
-            </motion.h4>
-            <motion.p 
-              className="text-purple-200 mb-8 text-lg"
-              whileHover={{ scale: 1.02 }}
-            >
-              Let's build something amazing together with these technologies!
-            </motion.p>
-            <motion.a
-              href="#contact"
-              className="inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-colors duration-200 shadow-lg shadow-purple-500/25"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Get In Touch
-            </motion.a>
-          </motion.div>
+         
         </div>
       </div>
     </section>
