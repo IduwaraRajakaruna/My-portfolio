@@ -45,19 +45,8 @@ const About = () => {
 
     // 📚 CUSTOMIZE: Update your personal information cards
   const aboutCards = [
-    {
-      icon: "🎓", // Change emoji icon
-      title: "Education", // Update title
-      description: "BSc (Hons) IT & Management at University of Moratuwa", // Your actual education
-      highlight: "CGPA: 3.1" // Current status
-    },
-    {
-      icon: "💻", // Change to represent your specialty
-      title: "Specialization", // Your main field
-      description: "Full-stack development with React + Node and .NET", // Your expertise
-      highlight: "React & .NET / React & Node " // Your tech stack
-      
-    },
+   
+   
 
   ]
 
