@@ -6,29 +6,28 @@ import legalflowImg3 from '../assets/projects/2nd year project/3.png'
 import legalflowImg4 from '../assets/projects/2nd year project/4.png'
 import legalflowImg5 from '../assets/projects/2nd year project/5.png'
 import legalflowImg6 from '../assets/projects/2nd year project/6.png'
+import smartHome1 from '../assets/projects/Hardware project/p1.jpeg'
+import smartHome2 from '../assets/projects/Hardware project/p2.jpeg'
+import smartHomeVideo from '../assets/projects/Hardware project/V1.mp4'
 
-// Small, self-contained image carousel component
+
 function ProjectCarousel({ images = [], interval = 3000 }) {
   const containerRef = useRef(null)
   const [index, setIndex] = useState(0)
 
-  // scroll to current index when index changes
+  // auto move
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((i) => (i + 1) % images.length)
+    }, interval)
+    return () => clearInterval(timer)
+  }, [images.length, interval])
+
   useEffect(() => {
     const el = containerRef.current
     if (!el) return
     const childWidth = el.clientWidth
     el.scrollTo({ left: index * childWidth, behavior: 'smooth' })
-  }, [index])
-
-  // keep correct snap width on resize
-  useEffect(() => {
-    const onResize = () => {
-      const el = containerRef.current
-      if (!el) return
-      el.scrollTo({ left: index * el.clientWidth })
-    }
-    window.addEventListener('resize', onResize)
-    return () => window.removeEventListener('resize', onResize)
   }, [index])
 
   const prev = () => setIndex((i) => (i - 1 + images.length) % images.length)
@@ -37,50 +36,48 @@ function ProjectCarousel({ images = [], interval = 3000 }) {
   return (
     <div className="relative overflow-hidden rounded-3xl shadow-2xl">
       <div ref={containerRef} className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory">
-        {images.map((imgSrc, i) => (
-          <img
-            key={i}
-            src={imgSrc}
-            alt={`screenshot ${i + 1}`}
-            className="w-full h-80 object-cover flex-shrink-0 snap-center"
-          />
+        {images.map((media, i) => (
+          <div key={i} className="w-full h-80 flex-shrink-0 snap-center relative">
+            {media.type === 'video' ? (
+              <video
+                src={media.src}
+                controls
+                autoPlay
+                muted
+                loop
+                className="w-full h-full object-cover rounded-3xl"
+              />
+            ) : (
+              <img
+                src={media.src}
+                alt={`media ${i + 1}`}
+                className="w-full h-full object-cover rounded-3xl"
+              />
+            )}
+          </div>
         ))}
       </div>
 
-      {/* Prev / Next controls (manual navigation) */}
       {images.length > 1 && (
         <>
           <button
             onClick={prev}
-            aria-label="Previous slide"
-            className="absolute left-3 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full shadow-lg"
+            className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/30 text-white p-2 rounded-full"
           >
             ‹
           </button>
           <button
             onClick={next}
-            aria-label="Next slide"
-            className="absolute right-3 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full shadow-lg"
+            className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/30 text-white p-2 rounded-full"
           >
             ›
           </button>
-
-          {/* Pagination dots */}
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-            {images.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setIndex(i)}
-                className={`w-2 h-2 rounded-full ${i === index ? 'bg-white' : 'bg-white/40'}`}
-                aria-label={`Go to slide ${i + 1}`}
-              />
-            ))}
-          </div>
         </>
       )}
     </div>
   )
 }
+
 
 // 🚀 PROJECTS SECTION - Showcase your portfolio projects
 // 📝 Customize: Replace with your actual projects, add screenshots, live links
@@ -164,12 +161,17 @@ const Projects = () => {
       id: 4,
       title: "Smart Home Receptionist (IoT)",
       description: "An automated visitor access system with smart gate control, motion detection, and Telegram bot notifications for seamless home automation.",
-  images: ["https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop&crop=center"],
+  media: [
+  { type: 'video', src: smartHomeVideo },
+  { type: 'image', src: smartHome1 },
+  { type: 'image', src: smartHome2 }
+],
+
       technologies: ["ESP32-S3", "PIR & IR Sensors", "C/C++", "Telegram Bot API", "IoT"],
       category: "IoT Project",
       challenge: "Coordinating multiple sensors with reliable communication and automated gate control",
       solution: "Developed motion detection system with DC motor control and integrated Telegram notifications",
-      features: ["Motion detection", "Automated gate control", "Telegram notifications", "Visitor management", "Real-time monitoring"],
+      features: ["Secure access control", "Remote access control", "Asynchronous voice communication", "Automatic gate control", "Image capture and object detection","Central server for data storage and processing"],
       liveUrl: "#",
       githubUrl: "https://github.com/IduwaraRajakaruna",
       featured: false,
@@ -259,7 +261,8 @@ const Projects = () => {
                     </div>
                     
                     {/* Multiple images carousel (auto-slides for LegalFlow) */}
-                    <ProjectCarousel images={project.images} auto={project.id === 1} interval={3500} />
+                    <ProjectCarousel images={project.media || project.images} interval={3500} />
+
 
                     
                     {/* Overlay */}
