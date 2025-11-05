@@ -15,13 +15,18 @@ function ProjectCarousel({ images = [], interval = 3000 }) {
   const containerRef = useRef(null)
   const [index, setIndex] = useState(0)
 
+  // Normalize images array so it supports both old and new formats
+  const mediaItems = images.map((item) =>
+    typeof item === "string" ? { type: "image", src: item } : item
+  )
+
   // auto move
   useEffect(() => {
     const timer = setInterval(() => {
-      setIndex((i) => (i + 1) % images.length)
+      setIndex((i) => (i + 1) % mediaItems.length)
     }, interval)
     return () => clearInterval(timer)
-  }, [images.length, interval])
+  }, [mediaItems.length, interval])
 
   useEffect(() => {
     const el = containerRef.current
@@ -30,13 +35,13 @@ function ProjectCarousel({ images = [], interval = 3000 }) {
     el.scrollTo({ left: index * childWidth, behavior: 'smooth' })
   }, [index])
 
-  const prev = () => setIndex((i) => (i - 1 + images.length) % images.length)
-  const next = () => setIndex((i) => (i + 1) % images.length)
+  const prev = () => setIndex((i) => (i - 1 + mediaItems.length) % mediaItems.length)
+  const next = () => setIndex((i) => (i + 1) % mediaItems.length)
 
   return (
     <div className="relative overflow-hidden rounded-3xl shadow-2xl">
       <div ref={containerRef} className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory">
-        {images.map((media, i) => (
+        {mediaItems.map((media, i) => (
           <div key={i} className="w-full h-80 flex-shrink-0 snap-center relative">
             {media.type === 'video' ? (
               <video
@@ -58,7 +63,7 @@ function ProjectCarousel({ images = [], interval = 3000 }) {
         ))}
       </div>
 
-      {images.length > 1 && (
+      {mediaItems.length > 1 && (
         <>
           <button
             onClick={prev}
@@ -77,6 +82,7 @@ function ProjectCarousel({ images = [], interval = 3000 }) {
     </div>
   )
 }
+
 
 
 // 🚀 PROJECTS SECTION - Showcase your portfolio projects
