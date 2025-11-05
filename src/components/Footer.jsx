@@ -60,9 +60,9 @@ const Footer = () => {
               whileHover={{ scale: 1.05, backgroundColor: "#374151" }}
               transition={{ duration: 0.2 }}
             >
-              v1.0.0
+              v1.0.4
             </motion.span>
-            <span className="text-gray-500">Last Updated: 2025-10-16</span>
+            <span className="text-gray-500">Last Updated: 2025-11-05</span>
           </div>
           
           {/* Right Side - Links */}
