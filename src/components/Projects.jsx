@@ -1,6 +1,86 @@
-import React, { useRef } from 'react'
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
+import React, { useRef, useEffect, useState } from 'react'
+import { motion, useInView } from 'framer-motion'
+import legalflowImg from '../assets/projects/2nd year project/1.png'
+import legalflowImg2 from '../assets/projects/2nd year project/2.png'
+import legalflowImg3 from '../assets/projects/2nd year project/3.png'
+import legalflowImg4 from '../assets/projects/2nd year project/4.png'
+import legalflowImg5 from '../assets/projects/2nd year project/5.png'
+import legalflowImg6 from '../assets/projects/2nd year project/6.png'
+
+// Small, self-contained image carousel component
+function ProjectCarousel({ images = [], interval = 3000 }) {
+  const containerRef = useRef(null)
+  const [index, setIndex] = useState(0)
+
+  // scroll to current index when index changes
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+    const childWidth = el.clientWidth
+    el.scrollTo({ left: index * childWidth, behavior: 'smooth' })
+  }, [index])
+
+  // keep correct snap width on resize
+  useEffect(() => {
+    const onResize = () => {
+      const el = containerRef.current
+      if (!el) return
+      el.scrollTo({ left: index * el.clientWidth })
+    }
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [index])
+
+  const prev = () => setIndex((i) => (i - 1 + images.length) % images.length)
+  const next = () => setIndex((i) => (i + 1) % images.length)
+
+  return (
+    <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+      <div ref={containerRef} className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory">
+        {images.map((imgSrc, i) => (
+          <img
+            key={i}
+            src={imgSrc}
+            alt={`screenshot ${i + 1}`}
+            className="w-full h-80 object-cover flex-shrink-0 snap-center"
+          />
+        ))}
+      </div>
+
+      {/* Prev / Next controls (manual navigation) */}
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={prev}
+            aria-label="Previous slide"
+            className="absolute left-3 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full shadow-lg"
+          >
+            ‹
+          </button>
+          <button
+            onClick={next}
+            aria-label="Next slide"
+            className="absolute right-3 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full shadow-lg"
+          >
+            ›
+          </button>
+
+          {/* Pagination dots */}
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setIndex(i)}
+                className={`w-2 h-2 rounded-full ${i === index ? 'bg-white' : 'bg-white/40'}`}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  )
+}
 
 // 🚀 PROJECTS SECTION - Showcase your portfolio projects
 // 📝 Customize: Replace with your actual projects, add screenshots, live links
@@ -36,7 +116,7 @@ const Projects = () => {
       id: 1,
       title: "LegalFlow - Centralized Legal Management System", // 📝 Your project name
       description: "A smart legal workflow management system that helps legal professionals manage meetings, deadlines, and documentation. Features real-time notifications and scheduling.", // 📝 Project description
-      image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&h=400&fit=crop&crop=center", // 📝 Replace with your project screenshot
+  images: [legalflowImg, legalflowImg2, legalflowImg3, legalflowImg4, legalflowImg5, legalflowImg6], // 📝 Replace with your project screenshots
       technologies: ["ASP.NET Core", "React", "Vite", "Tailwind CSS", "Azure Cosmos DB", "Azure Blob Storage"], // 📝 Technologies used
       category: "Full Stack", // 📝 Project category
       challenge: "Building a comprehensive system for legal professionals with complex workflow requirements", // 📝 Main challenge faced
@@ -52,7 +132,7 @@ const Projects = () => {
       id: 2,
       title: "BizRates Mobile App",
       description: "A mobile app designed with Figma to help users find and review top-rated businesses. Includes leaderboards, smart recommendations, messaging, and community features.",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop&crop=center",
+  images: ["https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop&crop=center"],
       technologies: ["Figma", "Mobile Design", "UX/UI", "Prototyping"],
       category: "Mobile Design",
       challenge: "Creating an intuitive user experience for business discovery and community interaction",
@@ -68,7 +148,7 @@ const Projects = () => {
       id: 3,
       title: "Laravel E-commerce Gift Shop",
       description: "A responsive e-commerce web application with comprehensive admin dashboard, product/category management, and role-based authentication system.",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop&crop=center",
+  images: ["https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop&crop=center"],
       technologies: ["Laravel", "MySQL", "Bootstrap", "PHP", "Blade Templates"],
       category: "Web Application",
       challenge: "Building a complete e-commerce solution with secure authentication and admin functionality",
@@ -84,7 +164,7 @@ const Projects = () => {
       id: 4,
       title: "Smart Home Receptionist (IoT)",
       description: "An automated visitor access system with smart gate control, motion detection, and Telegram bot notifications for seamless home automation.",
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop&crop=center",
+  images: ["https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop&crop=center"],
       technologies: ["ESP32-S3", "PIR & IR Sensors", "C/C++", "Telegram Bot API", "IoT"],
       category: "IoT Project",
       challenge: "Coordinating multiple sensors with reliable communication and automated gate control",
@@ -100,7 +180,7 @@ const Projects = () => {
       id: 5,
       title: "E-Commerce Website (Ongoing)",
       description: "A modern full-stack e-commerce platform built with React, Node.js, and MongoDB. Features product management, shopping cart, and secure payment processing.",
-      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop&crop=center",
+  images: ["https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop&crop=center"],
       technologies: ["React", "Node.js", "Express", "MongoDB", "REST APIs"],
       category: "Full Stack",
       challenge: "Building a scalable e-commerce platform with modern web technologies",
@@ -168,12 +248,8 @@ const Projects = () => {
                   <div className="relative overflow-hidden rounded-3xl shadow-2xl">
                     {/* Featured Badge */}
                     {project.featured && (
-                      <motion.div 
-                        className="absolute top-4 left-4 z-10 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold"
-                        animate={{ y: [0, -5, 0] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      >
-                        ⭐ Featured
+                      <motion.div>
+                        
                       </motion.div>
                     )}
                     
@@ -182,11 +258,9 @@ const Projects = () => {
                       {project.category}
                     </div>
                     
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
+                    {/* Multiple images carousel (auto-slides for LegalFlow) */}
+                    <ProjectCarousel images={project.images} auto={project.id === 1} interval={3500} />
+
                     
                     {/* Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">

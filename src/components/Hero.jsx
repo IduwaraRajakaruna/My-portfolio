@@ -49,7 +49,7 @@ const Hero = () => {
           muted
           playsInline
         >
-          <source src="/images/galaxy.mp4" type="video/mp4" />
+          <source src="/images/Erath.mp4" type="video/mp4" />
         </video>
         {/* Video Overlay for better text readability */}
         <div className="absolute inset-0 bg-black/40"></div>
