@@ -126,7 +126,7 @@ const Projects = () => {
       solution: "Implemented modular architecture with Calendar & Scheduling + Notifications modules, real-time API integration", // 📝 How you solved it
       features: ["Calendar & Scheduling", "Real-time notifications", "Document management", "Meeting coordination"], // 📝 Key features
       liveUrl: "#", // 📝 Replace with live demo URL
-      githubUrl: "https://github.com/IduwaraRajakaruna", // 📝 Replace with GitHub repository URL
+      githubUrl: "https://github.com/IduwaraRajakaruna/Aipazz.Server", // 📝 Replace with GitHub repository URL
       featured: true, // 📝 Set to true for featured projects
       timeline: "2nd Year Software Project | 2023–2024",
       role: "Frontend Developer - Calendar & Scheduling + Notifications modules"
@@ -158,7 +158,7 @@ const Projects = () => {
       solution: "Implemented Laravel's built-in authentication with role-based access control and comprehensive CRUD operations",
       features: ["Product management", "Category management", "Admin dashboard", "Role-based authentication", "Responsive design"],
       liveUrl: "#",
-      githubUrl: "https://github.com/IduwaraRajakaruna",
+      githubUrl: "https://github.com/IduwaraRajakaruna/Laravel-Project",
       featured: true,
       timeline: "Individual Project | 2024",
       role: "Full-Stack Developer"
@@ -178,8 +178,8 @@ const Projects = () => {
       challenge: "Coordinating multiple sensors with reliable communication and automated gate control",
       solution: "Developed motion detection system with DC motor control and integrated Telegram notifications",
       features: ["Secure access control", "Remote access control", "Asynchronous voice communication", "Automatic gate control", "Image capture and object detection","Central server for data storage and processing"],
-      liveUrl: "#",
-      githubUrl: "https://github.com/IduwaraRajakaruna",
+      
+      githubUrl: "https://github.com/IduwaraRajakaruna/smart_receptionist_esp32s3",
       featured: false,
       timeline: "1st Year Project | 2023–2024",
       role: "IoT Developer - Motion detection and DC motor control system"
@@ -195,7 +195,7 @@ const Projects = () => {
       solution: "Implementing MERN stack architecture with RESTful APIs and responsive design",
       features: ["Product catalog", "Shopping cart", "User authentication", "Order management", "Responsive design"],
       liveUrl: "#",
-      githubUrl: "https://github.com/IduwaraRajakaruna",
+      githubUrl: "https://github.com/IduwaraRajakaruna/E-Commerce",
       featured: false,
       timeline: "Ongoing Project | 2024",
       role: "Full-Stack Developer"
@@ -276,16 +276,13 @@ const Projects = () => {
                       <div className="absolute bottom-6 left-6 right-6">
                         <div className="flex space-x-3">
                           <motion.a
-                            href={project.liveUrl}
-                            className="flex-1 bg-white/90 backdrop-blur-sm text-gray-900 py-3 px-6 rounded-xl font-semibold text-center hover:bg-white transition-all duration-200"
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            whileTap={{ scale: 0.95 }}
+                           
                           >
-                            🚀 Live Demo
+                          
                           </motion.a>
                           <motion.a
                             href={project.githubUrl}
-                            className="flex-1 bg-gray-900/90 backdrop-blur-sm text-white py-3 px-6 rounded-xl font-semibold text-center hover:bg-gray-900 transition-all duration-200"
+                            className="  bg-gray-900/90 backdrop-blur-sm text-white py-3 px-6 rounded-xl font-semibold text-center hover:bg-gray-900 transition-all duration-200"
                             whileHover={{ scale: 1.05, y: -2 }}
                             whileTap={{ scale: 0.95 }}
                           >
